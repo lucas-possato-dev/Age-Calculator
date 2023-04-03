@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+
+  <title>Frontend Mentor | Age calculator app</title>
+</head>
+
+<body>
+
+
+  <main class="container">
+    <form class="form">
+      <label class="day" for="day">Day</label>
+      <input type="number" name="dd" id="dd" placeholder="DD" max="31">
+      <p class="error">This field is required</p>
+
+
+      <label class="month" for="month">Month</label>
+      <input type="number" name="mm" id="mm" placeholder="MM" max="12">
+      <p class="error">This field is required</p>
+
+
+      <label class="year" for="year">Year</label>
+      <input type="number" name="yyyy" id="yyyy" placeholder="YYYY" max="2023">
+      <p class="error">This field is required</p>
+
+    </form>
+
+    <section class="button">
+      <img src="/assets/images/icon-arrow.svg" alt="Calculate">
+    </section>
+
+    <section class="results">
+      <div><span id="ano">--</span>years</div>
+      <div><span id="mes">--</span>months</div>
+      <div><span id="dia">--</span>days</div>
+    </section>
+
+  </main>
+
+
+  <script src="/script.js"></script>
+</body>
+
+</html>
