@@ -26,7 +26,8 @@ function setDataAnterior() {
         document.querySelector("#ano").textContent = anos;
         input.nextElementSibling.classList.remove("active");
         input.classList.remove("erro");
-      } else {
+       }
+       else {
         errors[index].classList.add("active");
         input.classList.add("erro");
       }
@@ -34,7 +35,8 @@ function setDataAnterior() {
         document.querySelector("#mes").textContent = meses;
         input.nextElementSibling.classList.remove("active");
         input.classList.remove("erro");
-      } else {
+      } 
+       else {
         errors[index].classList.add("active");
         input.classList.add("erro");
 
@@ -43,7 +45,8 @@ function setDataAnterior() {
         document.querySelector("#dia").textContent = dias;
         input.nextElementSibling.classList.remove("active");
         input.classList.remove("erro");
-      } else {
+      } 
+      else {
         errors[index].classList.add("active");
         input.classList.add("erro");
 
@@ -62,8 +65,15 @@ function februarySituation(event) {
   if (parseInt(inputMeses.value) === 2 && inputDias.value > 28) {
     invalid.forEach((inv) => {
       inv.classList.add("alert");
-      event.preventDefault();
-    })
+    });
+    inputs.forEach((input) => {
+      if (!input.classList.contains("invalid")) {
+        input.nextElementSibling.classList.remove("active");
+        input.classList.add("erro");
+      } 
+    });
+    event.preventDefault();
+
   } else {
     invalid.forEach((inv) => {
       inv.classList.remove("alert");
@@ -72,23 +82,28 @@ function februarySituation(event) {
 }
 
 
-inputDias.addEventListener('input', () => {
+inputDias.addEventListener('input', (event) => {
   const valor = parseInt(inputDias.value);
   if (valor > 31) {
     inputDias.value = 31;
 } else if (valor < 1 || isNaN(valor)) {
   inputDias.value = '--';
-} 
-
+} else {
+  februarySituation(event);
+}
 })
-inputMeses.addEventListener('input', () => {
+inputMeses.addEventListener('input', (event) => {
   const valorMeses = parseInt(inputMeses.value);
   if (valorMeses > 12) {
     inputMeses.value = 12;
   } else if (valorMeses < 1 || isNaN(valorMeses)) {
     inputMeses.value = '--';
+  } else {
+  februarySituation(event);
   }
 })
+
+
 inputAnos.addEventListener('input', () => {
   const valorAnos = parseInt(inputAnos.value);
   if (valorAnos > dataAtual.getFullYear()) {
@@ -96,5 +111,6 @@ inputAnos.addEventListener('input', () => {
   } else if (valorAnos < 1 || isNaN(valorAnos))
   inputAnos.value = '--';
 })
+
 
 setDataAnterior();
