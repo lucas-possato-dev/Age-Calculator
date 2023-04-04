@@ -162,11 +162,28 @@ input[type=number] {
   color: hsl(0, 100%, 67%);
   font-weight: 400;
   font-style: italic;
-  font-size: 0.8em;
+  font-size: 0.75em;
   display: none;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .form .error.active {
+  display: block;
+}
+
+.invalid {
+  color: hsl(0, 100%, 67%);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.875em;
+  display: none;
+  text-align: center;
+  margin-bottom: 20px;
+  display: none;
+}
+
+.invalid.alert {
   display: block;
 }
 
@@ -190,7 +207,8 @@ input[type=number] {
   }
   .button::after {
     width: 610px;
-    right: 98px;
+    right: 100px;
+    bottom: 50px;
   }
   .button::before {
     display: none;
@@ -200,10 +218,11 @@ input[type=number] {
     width: 50px;
   }
   .container {
-    height: 800px;
+    max-height: 1000px;
+    height: 700px;
   }
   .results {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
   }
   .day {
     margin-right: 110px ;

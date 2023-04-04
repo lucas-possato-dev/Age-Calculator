@@ -2,8 +2,10 @@ const button = document.querySelector(".button");
 const inputs = document.querySelectorAll(".form input");
 const spans = document.querySelectorAll(".results div span");
 const errors = document.querySelectorAll(".form .error");
+const invalid = document.querySelectorAll(".form .invalid");
 const dataAtual = new Date();
 let dataAnterior = null;
+
 
 function setDataAnterior() {
   button.addEventListener("click", function() {
@@ -17,6 +19,7 @@ function setDataAnterior() {
     const meses = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30));
     const dias = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) % (1000 * 60 * 60 * 24 * 30) / (1000 * 60 * 60 * 24));
 
+    februarySituation();
 
     inputs.forEach((input, index) => {
       if (!isNaN(anos)) {
@@ -46,19 +49,37 @@ function setDataAnterior() {
 
       }
     });
+
+    februarySituation();
   })    
 }  
 
 const inputDias = document.getElementById('dd');
 const inputMeses = document.getElementById('mm');
 const inputAnos = document.getElementById('yyyy');
+
+function februarySituation(event) {
+  if (parseInt(inputMeses.value) === 2 && inputDias.value > 28) {
+    invalid.forEach((inv) => {
+      inv.classList.add("alert");
+      event.preventDefault();
+    })
+  } else {
+    invalid.forEach((inv) => {
+      inv.classList.remove("alert");
+    })
+  }
+}
+
+
 inputDias.addEventListener('input', () => {
   const valor = parseInt(inputDias.value);
   if (valor > 31) {
     inputDias.value = 31;
 } else if (valor < 1 || isNaN(valor)) {
   inputDias.value = '--';
-}
+} 
+
 })
 inputMeses.addEventListener('input', () => {
   const valorMeses = parseInt(inputMeses.value);
